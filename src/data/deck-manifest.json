@@ -1,0 +1,347 @@
+{
+  "width": 600,
+  "height": 1000,
+  "viewBox": "0 0 600 1000",
+  "radius": 18,
+  "colors": {
+    "front": "#F1E7D2",
+    "gold": "#C7A66B",
+    "secondary": "#A99268",
+    "text": "#51422F",
+    "back": "#201B16"
+  },
+  "artStroke": 3.2,
+  "frameStroke": 1.6,
+  "cards": [
+    {
+      "id": "major-00",
+      "number": 0,
+      "name": "The Fool",
+      "koreanName": "바보",
+      "keywords": [
+        "시작",
+        "자유",
+        "가능성",
+        "모험"
+      ],
+      "imagePath": "/assets/cards/major-00-the-fool.svg",
+      "roman": "0",
+      "motif": "Cliff, star and departing footsteps"
+    },
+    {
+      "id": "major-01",
+      "number": 1,
+      "name": "The Magician",
+      "koreanName": "마법사",
+      "keywords": [
+        "의지",
+        "실행",
+        "창조",
+        "잠재력"
+      ],
+      "imagePath": "/assets/cards/major-01-the-magician.svg",
+      "roman": "I",
+      "motif": "Raised hand, infinity and four elemental suit objects"
+    },
+    {
+      "id": "major-02",
+      "number": 2,
+      "name": "The High Priestess",
+      "koreanName": "여사제",
+      "keywords": [
+        "직관",
+        "내면",
+        "지혜",
+        "고요"
+      ],
+      "imagePath": "/assets/cards/major-02-the-high-priestess.svg",
+      "roman": "II",
+      "motif": "Twin pillars, veil and crescent moon"
+    },
+    {
+      "id": "major-03",
+      "number": 3,
+      "name": "The Empress",
+      "koreanName": "여황제",
+      "keywords": [
+        "풍요",
+        "돌봄",
+        "성장",
+        "창조성"
+      ],
+      "imagePath": "/assets/cards/major-03-the-empress.svg",
+      "roman": "III",
+      "motif": "Crown, flower and abundant foliage"
+    },
+    {
+      "id": "major-04",
+      "number": 4,
+      "name": "The Emperor",
+      "koreanName": "황제",
+      "keywords": [
+        "질서",
+        "책임",
+        "안정",
+        "리더십"
+      ],
+      "imagePath": "/assets/cards/major-04-the-emperor.svg",
+      "roman": "IV",
+      "motif": "Architectural throne and mountains"
+    },
+    {
+      "id": "major-05",
+      "number": 5,
+      "name": "The Hierophant",
+      "koreanName": "교황",
+      "keywords": [
+        "전통",
+        "배움",
+        "신념",
+        "조언"
+      ],
+      "imagePath": "/assets/cards/major-05-the-hierophant.svg",
+      "roman": "V",
+      "motif": "Crossed ceremonial keys and pillars"
+    },
+    {
+      "id": "major-06",
+      "number": 6,
+      "name": "The Lovers",
+      "koreanName": "연인",
+      "keywords": [
+        "관계",
+        "선택",
+        "조화",
+        "연결"
+      ],
+      "imagePath": "/assets/cards/major-06-the-lovers.svg",
+      "roman": "VI",
+      "motif": "Two connected circles, flower and sun"
+    },
+    {
+      "id": "major-07",
+      "number": 7,
+      "name": "The Chariot",
+      "koreanName": "전차",
+      "keywords": [
+        "추진력",
+        "의지",
+        "방향",
+        "전진"
+      ],
+      "imagePath": "/assets/cards/major-07-the-chariot.svg",
+      "roman": "VII",
+      "motif": "Twin wheels and a star-covered carriage"
+    },
+    {
+      "id": "major-08",
+      "number": 8,
+      "name": "Strength",
+      "koreanName": "힘",
+      "keywords": [
+        "용기",
+        "인내",
+        "온유함",
+        "내적 힘"
+      ],
+      "imagePath": "/assets/cards/major-08-strength.svg",
+      "roman": "VIII",
+      "motif": "Lion, infinity and a gentle botanical curve"
+    },
+    {
+      "id": "major-09",
+      "number": 9,
+      "name": "The Hermit",
+      "koreanName": "은둔자",
+      "keywords": [
+        "성찰",
+        "탐색",
+        "고독",
+        "안내"
+      ],
+      "imagePath": "/assets/cards/major-09-the-hermit.svg",
+      "roman": "IX",
+      "motif": "Lantern, starlight and mountains"
+    },
+    {
+      "id": "major-10",
+      "number": 10,
+      "name": "Wheel of Fortune",
+      "koreanName": "운명의 수레바퀴",
+      "keywords": [
+        "전환",
+        "순환",
+        "기회",
+        "변화"
+      ],
+      "imagePath": "/assets/cards/major-10-wheel-of-fortune.svg",
+      "roman": "X",
+      "motif": "Eight-spoked wheel and rotating orbits"
+    },
+    {
+      "id": "major-11",
+      "number": 11,
+      "name": "Justice",
+      "koreanName": "정의",
+      "keywords": [
+        "균형",
+        "공정",
+        "책임",
+        "판단"
+      ],
+      "imagePath": "/assets/cards/major-11-justice.svg",
+      "roman": "XI",
+      "motif": "Balanced scales and a central sword"
+    },
+    {
+      "id": "major-12",
+      "number": 12,
+      "name": "The Hanged Man",
+      "koreanName": "매달린 사람",
+      "keywords": [
+        "멈춤",
+        "관점 전환",
+        "내려놓음",
+        "수용"
+      ],
+      "imagePath": "/assets/cards/major-12-the-hanged-man.svg",
+      "roman": "XII",
+      "motif": "Inverted suspended figure and halo"
+    },
+    {
+      "id": "major-13",
+      "number": 13,
+      "name": "Death",
+      "koreanName": "죽음",
+      "keywords": [
+        "마무리",
+        "변화",
+        "전환",
+        "새로운 시작"
+      ],
+      "imagePath": "/assets/cards/major-13-death.svg",
+      "roman": "XIII",
+      "motif": "Wilted flower and rising sun"
+    },
+    {
+      "id": "major-14",
+      "number": 14,
+      "name": "Temperance",
+      "koreanName": "절제",
+      "keywords": [
+        "조율",
+        "균형",
+        "절제",
+        "통합"
+      ],
+      "imagePath": "/assets/cards/major-14-temperance.svg",
+      "roman": "XIV",
+      "motif": "Two vessels joined by flowing water"
+    },
+    {
+      "id": "major-15",
+      "number": 15,
+      "name": "The Devil",
+      "koreanName": "악마",
+      "keywords": [
+        "집착",
+        "구속",
+        "욕망",
+        "자각"
+      ],
+      "imagePath": "/assets/cards/major-15-the-devil.svg",
+      "roman": "XV",
+      "motif": "Horns, binding arch and chain"
+    },
+    {
+      "id": "major-16",
+      "number": 16,
+      "name": "The Tower",
+      "koreanName": "탑",
+      "keywords": [
+        "격변",
+        "붕괴",
+        "깨달음",
+        "재정립"
+      ],
+      "imagePath": "/assets/cards/major-16-the-tower.svg",
+      "roman": "XVI",
+      "motif": "Fractured tower and lightning"
+    },
+    {
+      "id": "major-17",
+      "number": 17,
+      "name": "The Star",
+      "koreanName": "별",
+      "keywords": [
+        "희망",
+        "회복",
+        "영감",
+        "가능성"
+      ],
+      "imagePath": "/assets/cards/major-17-the-star.svg",
+      "roman": "XVII",
+      "motif": "Large eight-pointed star and water"
+    },
+    {
+      "id": "major-18",
+      "number": 18,
+      "name": "The Moon",
+      "koreanName": "달",
+      "keywords": [
+        "불확실성",
+        "무의식",
+        "직관",
+        "불안"
+      ],
+      "imagePath": "/assets/cards/major-18-the-moon.svg",
+      "roman": "XVIII",
+      "motif": "Crescent moon, twin towers and waves"
+    },
+    {
+      "id": "major-19",
+      "number": 19,
+      "name": "The Sun",
+      "koreanName": "태양",
+      "keywords": [
+        "기쁨",
+        "활력",
+        "명료함",
+        "성장"
+      ],
+      "imagePath": "/assets/cards/major-19-the-sun.svg",
+      "roman": "XIX",
+      "motif": "Radiant sun and a standing flower"
+    },
+    {
+      "id": "major-20",
+      "number": 20,
+      "name": "Judgement",
+      "koreanName": "심판",
+      "keywords": [
+        "각성",
+        "성찰",
+        "응답",
+        "재출발"
+      ],
+      "imagePath": "/assets/cards/major-20-judgement.svg",
+      "roman": "XX",
+      "motif": "Trumpet, light and ascending lines"
+    },
+    {
+      "id": "major-21",
+      "number": 21,
+      "name": "The World",
+      "koreanName": "세계",
+      "keywords": [
+        "완성",
+        "통합",
+        "성취",
+        "새로운 순환"
+      ],
+      "imagePath": "/assets/cards/major-21-the-world.svg",
+      "roman": "XXI",
+      "motif": "Closed wreath and four elemental directions"
+    }
+  ]
+}
