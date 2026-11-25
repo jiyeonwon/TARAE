@@ -145,7 +145,8 @@ p{text-wrap:pretty}
 }
 
 @media(prefers-reduced-motion:reduce){
- .deck-card,.flip-inner{transition-duration:1ms!important}
+ .deck-card,.deck-card-visual,.flip-inner{transition-duration:1ms!important}
+ .flip-card.sequence-reveal .flip-inner{animation:none!important}
  .flip-card:hover .flip-inner{filter:none}
 }
 
@@ -170,7 +171,7 @@ html,body,#root{width:100%;height:100%;overflow:hidden}
 .app .splash{height:1080px;min-height:0;max-height:none}
 .app .brand-title{top:8.98%;font-size:180px}
 .app .tagline{top:29.26%;font-size:24px}
-.app .splash-cards{top:42.69%;transform:translateX(-50%);transform-origin:center}
+.app .splash-cards{top:41.4%;transform:translateX(-50%);transform-origin:center}
 .app .flourish{top:8%;width:51px;height:86%}
 .app .flourish.left{left:4.84%}
 .app .flourish.right{right:4.84%}
@@ -336,7 +337,7 @@ dialog{max-height:918px}
  height:976px;
  display:grid;
  grid-template-rows:auto minmax(0,1fr) 28px auto;
- overflow:hidden;
+ overflow:visible;
 }
 .app .ritual .heading{position:relative;z-index:2}
 .app .ritual .deck-area{
@@ -345,7 +346,7 @@ dialog{max-height:918px}
  min-height:360px;
  max-height:490px;
  margin:16px auto 0;
- overflow:clip;
+ overflow:visible;
 }
 .app .ritual .deck-card{width:168px}
 .app .ritual .deck-area.selecting .deck-card,.app .ritual .deck-area.drawn .deck-card{width:130px}
@@ -354,14 +355,81 @@ dialog{max-height:918px}
  visibility:hidden;
  pointer-events:none;
 }
-.app .selection-tray{grid-template-columns:repeat(3,90px);gap:18px}
-.app .selected-slot{grid-template-rows:138px auto auto;gap:6px}
-.app .selected-slot .slot-card{width:84px;height:136px}
+.app .selection-tray{grid-template-columns:repeat(3,90px);gap:18px;transition:top 420ms var(--ease),transform 420ms var(--ease),grid-template-columns 420ms var(--ease),gap 420ms var(--ease)}
+.app .selected-slot{grid-template-rows:138px auto auto;gap:6px;transition:grid-template-rows 420ms var(--ease)}
+.app .selected-slot .slot-card{width:84px;height:136px;transition:width 420ms var(--ease),height 420ms var(--ease),border-color 180ms ease}
 .app .deck-area:not(.selected-0) .fan-deck{transform:none}
+.app .deck-area.drawn .selection-tray{top:50%;transform:translate(-50%,-50%);grid-template-columns:repeat(3,154px);gap:40px}
+.app .deck-area.drawn .selected-slot{grid-template-rows:230px auto auto;gap:9px}
+.app .deck-area.drawn .selected-slot .slot-card{width:142px;height:230px;border-color:rgba(199,166,107,.7)}
+.app .deck-area.drawn .fan-deck{opacity:0;visibility:hidden;pointer-events:none}
 .app .deck-status{align-self:center;margin:0;min-height:28px;line-height:1.5}
 .app .ritual-footer{align-self:end;margin:8px 0 18px;min-height:158px}
 .app .camera-preview.mini{width:280px}
 .app .ritual-controls{justify-content:center;min-height:64px}
+
+/* Direct-manipulation deck motion: transforms are written by one rAF loop. */
+.app .deck-card{
+ left:50%;
+ top:50%;
+ transition:opacity 180ms ease,outline-color 140ms ease,filter 140ms ease;
+ transform-origin:50% 78%;
+ backface-visibility:hidden;
+ contain:layout style;
+ will-change:auto;
+}
+.fan-deck{transition:opacity 240ms ease,visibility 240ms ease}
+.deck-card-visual{display:block;width:100%;height:100%;pointer-events:none;transform:translate3d(0,0,0) scale(1);transform-origin:50% 72%;transition:transform 180ms var(--ease)}
+.deck-card:hover:not(:disabled) .deck-card-visual,.deck-card:focus-visible .deck-card-visual,.deck-card[data-draw-state="hover"] .deck-card-visual{transform:translate3d(0,-8px,0) scale(1.035)}
+.deck-card[data-draw-state="dragging_up"] .deck-card-visual,.deck-card[data-draw-state="holding"] .deck-card-visual{transform:translate3d(0,0,0) scale(1.035)}
+.app .deck-area.shuffling .deck-card{transition:opacity 180ms ease,outline-color 140ms ease,filter 140ms ease}
+.app .deck-area.shuffling .deck-card,.deck-card[data-draw-state="dragging_up"],.deck-card[data-draw-state="holding"],.deck-card[data-draw-state="returning"]{will-change:transform}
+.deck-card:hover:not(:disabled),.deck-card:focus-visible,.deck-card[data-draw-state="hover"],.deck-card[data-draw-state="dragging_up"],.deck-card[data-draw-state="holding"]{
+ outline:1px solid var(--gold);
+ outline-offset:5px;
+ filter:brightness(1.035);
+}
+.deck-card[data-draw-state="dragging_up"],.deck-card[data-draw-state="holding"]{cursor:grabbing}
+.draw-feedback{
+ position:absolute;
+ left:50%;
+ top:-42px;
+ width:156px;
+ transform:translateX(calc(-50% + var(--feedback-shift,0px)));
+ display:grid;
+ gap:8px;
+ color:var(--screen-text);
+ font:500 12px/1.35 var(--font-body);
+ letter-spacing:.01em;
+ opacity:0;
+ pointer-events:none;
+ transition:opacity 140ms ease;
+}
+.draw-feedback i{display:block;width:100%;height:2px;background:var(--screen-line);overflow:hidden;transform-origin:left}
+.draw-feedback i::after{content:'';display:block;width:100%;height:100%;background:var(--gold);transform:scaleX(var(--hold-progress,0));transform-origin:left}
+.deck-card[data-draw-state="holding"] .draw-feedback{opacity:1}
+.deck-hand-pointer{
+ position:absolute;
+ left:0;
+ top:0;
+ z-index:120;
+ width:20px;
+ height:20px;
+ border:2px solid var(--primary);
+ border-radius:50%;
+ background:rgba(12,11,9,.28);
+ box-shadow:0 3px 12px rgba(0,0,0,.35);
+ transform:translate3d(0,0,0) translate(-50%,-50%);
+ opacity:0;
+ pointer-events:none;
+ will-change:transform;
+}
+.card-flight{position:fixed;z-index:999;pointer-events:none;transform-origin:center;will-change:transform}
+.card-flight img{width:100%;height:100%;object-fit:contain}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+@keyframes tarae-card-reveal{from{transform:rotateY(0deg)}to{transform:rotateY(180deg)}}
+.flip-card.sequence-reveal .flip-inner{animation:tarae-card-reveal var(--flip) var(--ease) var(--flip-delay,0ms) both}
 
 .app .complete-actions{margin-top:96px}
 
@@ -390,7 +458,7 @@ dialog{max-height:918px}
  .app .splash{height:100dvh;min-height:700px}
  .app .brand-title{top:13%;font-size:92px}
  .app .tagline{top:29%;font-size:18px}
- .app .splash-cards{top:42%;transform:translateX(-50%) scale(.58)}
+ .app .splash-cards{top:40.8%;transform:translateX(-50%) scale(.58)}
  .app .splash-actions{top:78%;width:min(280px,calc(100% - 48px))}
  .app .flourish{top:5%;height:90%;width:24px}
  .app .flourish.left{left:10px}.app .flourish.right{right:10px}
@@ -413,9 +481,13 @@ dialog{max-height:918px}
  .app .ritual .deck-area{height:420px;min-height:420px;max-height:none;margin-top:24px}
  .app .ritual .deck-card{width:92px}
  .app .ritual .deck-area.selecting .deck-card,.app .ritual .deck-area.drawn .deck-card{width:76px}
+ .draw-feedback{top:-36px;width:132px;font-size:11px}
  .app .selection-tray{grid-template-columns:repeat(3,70px);gap:10px}
  .app .selected-slot{grid-template-rows:106px auto auto}
  .app .selected-slot .slot-card{width:64px;height:104px}
+ .app .deck-area.drawn .selection-tray{top:48%;grid-template-columns:repeat(3,92px);gap:12px}
+ .app .deck-area.drawn .selected-slot{grid-template-rows:140px auto auto;gap:7px}
+ .app .deck-area.drawn .selected-slot .slot-card{width:86px;height:140px}
  .app .selected-slot small{font-size:10px}
  .app .deck-status{max-width:100%;min-height:42px;margin:0 auto;font-size:13px}
  .app .ritual-footer{min-height:0;margin-top:20px;align-items:stretch;gap:20px;flex-direction:column}
